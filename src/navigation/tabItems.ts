@@ -3,7 +3,6 @@ import type { ComponentProps, ComponentType } from "react";
 
 import { About } from "../screens/About";
 import { Home } from "../screens/Home";
-import { HomeHero } from "../screens/HomeHero";
 
 type MaterialIconName = ComponentProps<typeof MaterialCommunityIcons>["name"];
 
@@ -20,12 +19,6 @@ export const tabItems: TabItem[] = [
     component: Home,
     title: "Início",
     iconName: "home-outline",
-  },
-  {
-    name: "Home Hero",
-    component: HomeHero,
-    title: "Início Hero",
-    iconName: "home-variant-outline",
   },
   {
     name: "About",
