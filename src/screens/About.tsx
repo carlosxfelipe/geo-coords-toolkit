@@ -32,8 +32,12 @@ export function About() {
           • ReverseGeocodeCard: Busca de endereços de forma interativa.
         </ThemedText>
         <ThemedText style={styles.item}>
-          • NativeDistanceMap: Mapas nativos com Google Maps (Android) e Apple
+          • ExpoDistanceMap: Mapas nativos com Google Maps (Android) e Apple
           Maps (iOS).
+        </ThemedText>
+        <ThemedText style={styles.item}>
+          • NativeDistanceMap: Mantido como versão enxuta que não exige o
+          expo-location (sem suporte a opções avançadas de localização).
         </ThemedText>
         <ThemedText style={styles.item}>
           • WebViewDistanceMap: Fallback universal de mapas usando Leaflet.

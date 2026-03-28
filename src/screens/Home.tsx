@@ -2,7 +2,7 @@ import { StyleSheet, Platform } from "react-native";
 import { ThemedScrollView } from "../components/ThemedScrollView";
 import { ThemedText } from "../components/ThemedText";
 import WebViewDistanceMap from "../components/WebViewDistanceMap";
-import NativeDistanceMap from "../components/NativeDistanceMap";
+import ExpoDistanceMap from "../components/ExpoDistanceMap";
 import ReverseGeocodeCard from "../components/ReverseGeocodeCard";
 
 export function Home() {
@@ -22,17 +22,20 @@ export function Home() {
 
       {Platform.OS !== "web" && (
         <>
-          <ThemedText style={{ marginTop: 24, fontSize: 18, fontWeight: "bold" }}>
+          <ThemedText
+            style={{ marginTop: 24, fontSize: 18, fontWeight: "bold" }}
+          >
             Versão Nativa (Apple/Google)
           </ThemedText>
           <ThemedText style={{ marginBottom: 8 }}>
             Mapa leve renderizado usando o SDK Nativo do celular.
           </ThemedText>
-          <NativeDistanceMap
+          <ExpoDistanceMap
             oldLat={-3.75543}
             oldLon={-38.48734}
             newLat={-3.74182}
             newLon={-38.47023}
+            // showCurrentLocation
           />
         </>
       )}

@@ -7,7 +7,8 @@ Conjunto de componentes e utilitários especializados no tratamento, cálculo e 
 O toolkit disponibiliza componentes prontos para uso em telas de geolocalização:
 
 - **`ReverseGeocodeCard`**: Interface interativa para geocodificação reversa de endereços.
-- **`NativeDistanceMap`**: Visualização nativa de divergência entre pontos utilizando os SDKs originais de cada plataforma (**Google Maps no Android** e **Apple Maps no iOS**).
+- **`ExpoDistanceMap`**: Visualização nativa de divergência entre pontos utilizando os SDKs originais de cada plataforma (**Google Maps no Android** e **Apple Maps no iOS**).
+- **`NativeDistanceMap`**: Versão alternativa ao *ExpoDistanceMap* mantida no projeto por **não depender do pacote `expo-location`** (esta versão não suporta as propriedades `showCurrentLocation` e `markerType`).
 - **`WebViewDistanceMap`**: Fallback universal para visualização de mapas via Leaflet em WebViews.
 
 ## 🛠️ Funções e Lógica de Cálculo
