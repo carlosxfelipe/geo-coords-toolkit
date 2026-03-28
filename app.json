@@ -10,14 +10,22 @@
     "scheme": "geocoordstoolkit",
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "com.geocoordstoolkit"
+      "bundleIdentifier": "com.geocoordstoolkit",
+      "infoPlist": {
+        "NSLocationWhenInUseUsageDescription": "O aplicativo precisa da sua localização para mostrar no mapa."
+      }
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.geocoordstoolkit"
+      "package": "com.geocoordstoolkit",
+      "permissions": [
+        "ACCESS_COARSE_LOCATION",
+        "ACCESS_FINE_LOCATION",
+        "INTERNET"
+      ]
     },
     "web": {
       "favicon": "./assets/favicon.png"
