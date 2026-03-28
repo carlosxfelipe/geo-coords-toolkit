@@ -1,4 +1,4 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet, Platform } from "react-native";
 import { ThemedScrollView } from "../components/ThemedScrollView";
 import { ThemedText } from "../components/ThemedText";
 import WebViewDistanceMap from "../components/WebViewDistanceMap";
@@ -20,26 +20,29 @@ export function Home() {
       </ThemedText>
       <ReverseGeocodeCard />
 
-      <ThemedText style={{ marginTop: 24, fontSize: 18, fontWeight: "bold" }}>
-        Versão Nativa (Apple/Google)
-      </ThemedText>
-      <ThemedText style={{ marginBottom: 8 }}>
-        Mapa leve renderizado usando o SDK Nativo do celular.
-      </ThemedText>
+      {Platform.OS !== "web" && (
+        <>
+          <ThemedText style={{ marginTop: 24, fontSize: 18, fontWeight: "bold" }}>
+            Versão Nativa (Apple/Google)
+          </ThemedText>
+          <ThemedText style={{ marginBottom: 8 }}>
+            Mapa leve renderizado usando o SDK Nativo do celular.
+          </ThemedText>
+          <NativeDistanceMap
+            oldLat={-3.75543}
+            oldLon={-38.48734}
+            newLat={-3.74182}
+            newLon={-38.47023}
+          />
+        </>
+      )}
 
-      <NativeDistanceMap
-        oldLat={-3.75543}
-        oldLon={-38.48734}
-        newLat={-3.74182}
-        newLon={-38.47023}
-      />
       <ThemedText style={{ marginTop: 24, fontSize: 18, fontWeight: "bold" }}>
         Versão Web (Leaflet)
       </ThemedText>
       <ThemedText style={{ marginBottom: 8 }}>
         Mapa carregado dentro de uma WebView via iframe HTML.
       </ThemedText>
-
       <WebViewDistanceMap
         oldLat={-3.75543}
         oldLon={-38.48734}
