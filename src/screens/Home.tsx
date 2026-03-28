@@ -4,6 +4,7 @@ import { ThemedText } from "../components/ThemedText";
 import { Button } from "../components/Button";
 import { Icon } from "../components/Icon";
 import CoordinateDivergenceMap from "../components/CoordinateDivergenceMap";
+import { ReverseGeocodeCard } from "../components/ReverseGeocodeCard";
 
 export function Home() {
   return (
@@ -33,6 +34,9 @@ export function Home() {
       >
         Ir para as Configurações
       </Button>
+
+      {/* Exemplo: geocodificação reversa */}
+      <ReverseGeocodeCard />
 
       {/* Exemplo: divergência de coordenadas */}
       {/* Iguatemi → RioMar Fortaleza */}
