@@ -1,7 +1,9 @@
 import { StyleSheet } from "react-native";
 import { ThemedScrollView } from "../components/ThemedScrollView";
-import CoordinateDivergenceMap from "../components/CoordinateDivergenceMap";
-import { ReverseGeocodeCard } from "../components/ReverseGeocodeCard";
+import { ThemedText } from "../components/ThemedText";
+import WebViewDistanceMap from "../components/WebViewDistanceMap";
+import NativeDistanceMap from "../components/NativeDistanceMap";
+import ReverseGeocodeCard from "../components/ReverseGeocodeCard";
 
 export function Home() {
   return (
@@ -10,12 +12,35 @@ export function Home() {
       contentContainerStyle={styles.contentContainer}
       showsVerticalScrollIndicator={false}
     >
-      {/* Exemplo: geocodificação reversa */}
+      <ThemedText style={{ marginTop: 10, fontSize: 18, fontWeight: "bold" }}>
+        Geocodificação Reversa
+      </ThemedText>
+      <ThemedText style={{ marginBottom: 8 }}>
+        Converte coordenadas e informações geográficas simples em endereço.
+      </ThemedText>
       <ReverseGeocodeCard />
 
-      {/* Exemplo: divergência de coordenadas */}
-      {/* Iguatemi → RioMar Fortaleza */}
-      <CoordinateDivergenceMap
+      <ThemedText style={{ marginTop: 24, fontSize: 18, fontWeight: "bold" }}>
+        Versão Nativa (Apple/Google)
+      </ThemedText>
+      <ThemedText style={{ marginBottom: 8 }}>
+        Mapa leve renderizado usando o SDK Nativo do celular.
+      </ThemedText>
+
+      <NativeDistanceMap
+        oldLat={-3.75543}
+        oldLon={-38.48734}
+        newLat={-3.74182}
+        newLon={-38.47023}
+      />
+      <ThemedText style={{ marginTop: 24, fontSize: 18, fontWeight: "bold" }}>
+        Versão Web (Leaflet)
+      </ThemedText>
+      <ThemedText style={{ marginBottom: 8 }}>
+        Mapa carregado dentro de uma WebView via iframe HTML.
+      </ThemedText>
+
+      <WebViewDistanceMap
         oldLat={-3.75543}
         oldLon={-38.48734}
         newLat={-3.74182}

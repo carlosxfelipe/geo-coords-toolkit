@@ -20,7 +20,7 @@ interface GeoResult {
   country: string | undefined;
 }
 
-export function ReverseGeocodeCard() {
+export default function ReverseGeocodeCard() {
   const theme = useTheme() as AppTheme;
   const { colors, fonts, dark } = theme;
 

@@ -33,7 +33,7 @@ const COLORS = {
   shadowMapWeb: "rgba(0,0,0,0.15)",
 };
 
-interface CoordinateDivergenceMapProps {
+interface WebViewDistanceMapProps {
   oldLat: number;
   oldLon: number;
   newLat: number;
@@ -197,19 +197,29 @@ function buildMapHTML(
       showCurrentLocation
         ? `
     if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(function(pos) {
-        var curLat = pos.coords.latitude;
-        var curLon = pos.coords.longitude;
-        var curIcon = L.divIcon({
-          className: '',
-          html: '<div class="custom-marker marker-current"></div>',
-          iconSize: [14, 14],
-          iconAnchor: [7, 7],
-        });
-        L.marker([curLat, curLon], { icon: curIcon })
-          .addTo(map)
-          .bindPopup('<b>Sua Localização</b><br>' + curLat.toFixed(6) + ', ' + curLon.toFixed(6));
-      });
+      navigator.geolocation.getCurrentPosition(
+        function(pos) {
+          var curLat = pos.coords.latitude;
+          var curLon = pos.coords.longitude;
+          var curIcon = L.divIcon({
+            className: '',
+            html: '<div class="custom-marker marker-current"></div>',
+            iconSize: [14, 14],
+            iconAnchor: [7, 7],
+          });
+          var currentMarker = L.marker([curLat, curLon], { icon: curIcon })
+            .addTo(map)
+            .bindPopup('<b>Sua Localização</b><br>' + curLat.toFixed(6) + ', ' + curLon.toFixed(6));
+            
+          // Ajusta o zoom do mapa para englobar a sua localização + a rota
+          var group = L.featureGroup([polyline, currentMarker]);
+          map.fitBounds(group.getBounds().pad(0.2));
+        },
+        function(err) {
+          console.error("Erro ao pegar localização na WebView: " + err.message);
+        },
+        { enableHighAccuracy: true, timeout: 10000, maximumAge: 0 }
+      );
     }
     `
         : ""
@@ -219,7 +229,7 @@ function buildMapHTML(
 </html>`;
 }
 
-export function CoordinateDivergenceMap({
+export default function WebViewDistanceMap({
   oldLat,
   oldLon,
   newLat,
@@ -228,7 +238,7 @@ export function CoordinateDivergenceMap({
   borderRadius = 16,
   showCurrentLocation = false,
   markerType = "icon",
-}: CoordinateDivergenceMapProps) {
+}: WebViewDistanceMapProps) {
   const colorScheme = useColorScheme();
   const isDark = colorScheme === "dark";
 
@@ -289,11 +299,12 @@ export function CoordinateDivergenceMap({
       return (
         <View style={styles.mapContainer}>
           <WebView
-            source={{ html: mapHtml }}
+            source={{ html: mapHtml, baseUrl: "https://localhost" }}
             style={{ height: mapHeight, borderRadius }}
             scrollEnabled={false}
             javaScriptEnabled
             domStorageEnabled
+            geolocationEnabled={true}
           />
         </View>
       );
@@ -484,5 +495,3 @@ const createStyles = (
       fontVariant: ["tabular-nums"],
     },
   });
-
-export default CoordinateDivergenceMap;
