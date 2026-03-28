@@ -1,65 +1,40 @@
-# Starter Template with React Navigation
+# Geo Coords Toolkit 🌍
 
-This is a minimal starter template for React Native apps using Expo and React Navigation.
+Conjunto de componentes e utilitários especializados no tratamento, cálculo e visualização de coordenadas geográficas para React Native e Web.
 
-It includes the following:
+## 📦 Componentes Principais
 
-- Example [Native Stack](https://reactnavigation.org/docs/native-stack-navigator) with a nested [Bottom Tab](https://reactnavigation.org/docs/bottom-tab-navigator)
-- Web support with [React Native for Web](https://necolas.github.io/react-native-web/)
-- TypeScript support and configured for React Navigation
-- Automatic [deep link](https://reactnavigation.org/docs/deep-linking) and [URL handling configuration](https://reactnavigation.org/docs/configuring-links)
-- Theme support [based on system appearance](https://reactnavigation.org/docs/themes/#using-the-operating-system-preferences)
-- Expo [Development Build](https://docs.expo.dev/develop/development-builds/introduction/) with [Continuous Native Generation](https://docs.expo.dev/workflow/continuous-native-generation/)
+O toolkit disponibiliza componentes prontos para uso em telas de geolocalização:
 
-## Getting Started
+- **`ReverseGeocodeCard`**: Interface interativa para geocodificação reversa de endereços.
+- **`NativeDistanceMap`**: Visualização nativa de divergência entre pontos utilizando os SDKs originais de cada plataforma (**Google Maps no Android** e **Apple Maps no iOS**).
+- **`WebViewDistanceMap`**: Fallback universal para visualização de mapas via Leaflet em WebViews.
 
-1. Create a new project using this template:
-
-   ```sh
-   npx create-expo-app@latest --template react-navigation/template
-   ```
-
-2. Edit the `app.json` file to configure the `name`, `slug`, `scheme` and bundle identifiers (`ios.bundleIdentifier` and `android.bundleIdentifier`) for your app.
-
-3. Edit the `src/App.tsx` file to start working on your app.
-
-## Running the app
-
-- Install the dependencies:
-
-  ```sh
-  npm install
-  ```
-
-- Start the development server:
-
-  ```sh
-  npm start
-  ```
-
-- Build and run iOS and Android development builds:
-
-  ```sh
-  npm run ios
-  # or
-  npm run android
-  ```
-
-- In the terminal running the development server, press `i` to open the iOS simulator, `a` to open the Android device or emulator, or `w` to open the web browser.
-
-## Notes
-
-This project uses a [development build](https://docs.expo.dev/develop/development-builds/introduction/) and cannot be run with [Expo Go](https://expo.dev/go). To run the app with Expo Go, edit the `package.json` file, remove the `expo-dev-client` package and `--dev-client` flag from the `start` script.
-
-We highly recommend using the development builds for normal development and testing.
-
-The `ios` and `android` folder are gitignored in the project by default as they are automatically generated during the build process ([Continuous Native Generation](https://docs.expo.dev/workflow/continuous-native-generation/)). This means that you should not edit these folders directly and use [config plugins](https://docs.expo.dev/config-plugins/) instead. However, if you need to edit these folders, you can remove them from the `.gitignore` file so that they are tracked by git.
-
-## Resources
-
-- [React Navigation documentation](https://reactnavigation.org/)
-- [Expo documentation](https://docs.expo.dev/)
+## 🛠️ Funções e Lógica de Cálculo
+Para cálculos de distância (Haversine), conversão de graus (DMS) e outras utilidades matemáticas:
+👉 **[Veja o Guia Completo de Utilitários (src/utils/README.md)](./src/utils/README.md)**
 
 ---
 
-Demo assets are from [lucide.dev](https://lucide.dev/)
+## 🚀 Como Executar o Projeto
+
+1. **Setup Inicial:**
+   ```bash
+   git clone https://github.com/carlosxfelipe/geo-coords-toolkit.git
+   cd geo-coords-toolkit
+   npm install
+   ```
+
+2. **Credenciais do Mapa (Android):**
+   Crie um arquivo `.env` na raiz do projeto com sua Google Maps API Key para que o mapa funcione no Android (o iOS utiliza Apple Maps nativo e não requer chave):
+   ```env
+   GOOGLE_MAPS_API_KEY=SUA_CHAVE_AQUI
+   ```
+
+3. **Rodar em Diferentes Plataformas:**
+   - **Android:** `npm run android`
+   - **iOS:** `npm run ios`
+   - **Web:** `npm run web`
+
+## 📁 Estrutura Nativa
+As pastas `android/` e `ios/` são autogeradas (CNG) e estão protegidas no `.gitignore`. Gerencie chaves e permissões apenas via `.env` ou `app.json`.

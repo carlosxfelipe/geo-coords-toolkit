@@ -1,6 +1,8 @@
-# geo-coords-utils
+# Geo Coords Utils 🧩
 
-## Conversão para DMS
+Biblioteca de funções utilitárias para manipulação de dados geoespaciais e cálculos geodésicos.
+
+## Conversão para DMS 📐
 
 Converte coordenadas decimais (latitude/longitude) para o formato DMS (Graus, Minutos e Segundos).
 
@@ -15,7 +17,7 @@ console.log(formatLatLngToDMS(lat, lng, { decimals: 1 }));
 
 As direções cardeais usam abreviações em português: **N** (Norte), **S** (Sul), **L** (Leste) e **O** (Oeste).
 
-## Geocodificação reversa
+## Geocodificação reversa 📍
 
 O módulo `reverse-geocode.ts` descobre o nome do local a partir das coordenadas, usando a API gratuita do [Nominatim (OpenStreetMap)](https://nominatim.openstreetmap.org/). Os resultados são retornados em português.
 
@@ -28,7 +30,7 @@ console.log(location.state);   // Ceará
 console.log(location.country); // Brasil
 ```
 
-## Distância entre coordenadas (Haversine)
+## Distância entre coordenadas (Haversine) 📏
 
 O módulo `haversine.ts` calcula a distância entre duas coordenadas geográficas usando a [fórmula de Haversine](https://en.wikipedia.org/wiki/Haversine_formula). O resultado é retornado em metros.
 
