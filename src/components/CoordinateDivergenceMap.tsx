@@ -28,7 +28,6 @@ function buildMapHTML(
   newLat: number,
   newLon: number,
   distance: string,
-  isDark: boolean,
   showCurrentLocation: boolean,
 ) {
   const centerLat = (oldLat + newLat) / 2;
@@ -49,13 +48,9 @@ function buildMapHTML(
   else if (maxDiff > 0.001) zoom = 16;
   else zoom = 18;
 
-  const tileUrl = isDark
-    ? "https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
-    : "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png";
+  const tileUrl = "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png";
 
-  const tileAttribution = isDark
-    ? '&copy; <a href="https://carto.com/">CARTO</a>'
-    : '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>';
+  const tileAttribution = '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>';
 
   return `
 <!DOCTYPE html>
@@ -203,8 +198,8 @@ export function CoordinateDivergenceMap({
   const newDMS = `${convertToDMS(newLat, "lat")} ${convertToDMS(newLon, "lon")}`;
 
   const mapHtml = useMemo(
-    () => buildMapHTML(oldLat, oldLon, newLat, newLon, distanceText, isDark, showCurrentLocation),
-    [oldLat, oldLon, newLat, newLon, distanceText, isDark, showCurrentLocation],
+    () => buildMapHTML(oldLat, oldLon, newLat, newLon, distanceText, showCurrentLocation),
+    [oldLat, oldLon, newLat, newLon, distanceText, showCurrentLocation],
   );
 
   const renderMap = () => {
