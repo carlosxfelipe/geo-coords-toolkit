@@ -26,7 +26,7 @@ export const reverseGeocode = async (
 
   const response = await fetch(url, {
     headers: {
-      "User-Agent": "convert-to-dms/1.0",
+      "User-Agent": "geo-coords-toolkit/1.0",
     },
   });
 
